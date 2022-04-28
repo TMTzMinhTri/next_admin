@@ -3,18 +3,15 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { IGlobalReducer } from './types';
 
 const initialState: IGlobalReducer = {
-  themeMode: false,
+  isShowMenu: false,
 };
 
 const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    changeTheme: (state) => {
-      return {
-        ...state,
-        themeMode: !state.themeMode,
-      };
+    toggleMenu: (state) => {
+      state.isShowMenu = !state.isShowMenu;
     },
   },
   extraReducers: {
@@ -28,5 +25,7 @@ const globalSlice = createSlice({
   },
 });
 
-export const { changeTheme } = globalSlice.actions;
+const actions = { ...globalSlice.actions };
+
+export { actions as globalActions };
 export default globalSlice;

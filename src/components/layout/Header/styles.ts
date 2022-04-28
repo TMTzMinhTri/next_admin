@@ -2,9 +2,13 @@ import { SxProps, Theme } from '@mui/system';
 
 enum headerStyle {
   userMenuPaper = 'userMenuPaper',
+  menuIcon = 'menuIcon',
 }
 
 const styles: Record<headerStyle, SxProps<Theme>> = {
+  menuIcon: {
+    display: { xs: 'block', sm: 'none' },
+  },
   userMenuPaper: {
     overflow: 'visible',
     filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',

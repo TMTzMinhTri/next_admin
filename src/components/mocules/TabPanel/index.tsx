@@ -10,11 +10,21 @@ interface ITabPanelProps {
   keep?: boolean;
 }
 
-const TabPanel: React.FC<ITabPanelProps> = ({ children, value, index, keep = false }) => {
+const TabPanel: React.FC<ITabPanelProps> = ({
+  children,
+  value,
+  index,
+  keep = false,
+}) => {
   const currentTab = useSelector(selectCurrentTab);
 
   return (
-    <div role="tabpanel" hidden={value !== currentTab} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`}>
+    <div
+      role="tabpanel"
+      hidden={value !== currentTab}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+    >
       {keep ? children : value === currentTab && children}
     </div>
   );

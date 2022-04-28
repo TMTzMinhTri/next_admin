@@ -1,3 +1,3 @@
 export interface IGlobalReducer {
-    themeMode: boolean
+  isShowMenu: boolean;
 }
