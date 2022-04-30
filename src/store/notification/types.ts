@@ -1,12 +1,12 @@
-import { SnackbarMessage, OptionsObject, SnackbarKey } from 'notistack';
+import { SnackbarMessage, OptionsObject, SnackbarKey } from 'notistack'
 
 export interface INotificationReducer {
-  notifications: Array<INotification>;
+  notifications: Array<INotification>
 }
 
 export interface INotification {
-  key: SnackbarKey;
-  message: SnackbarMessage;
-  options: OptionsObject;
-  dismissed?: boolean;
+  key: SnackbarKey
+  message: SnackbarMessage
+  options: OptionsObject
+  dismissed?: boolean
 }

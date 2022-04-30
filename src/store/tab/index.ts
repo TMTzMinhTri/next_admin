@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ITabReducer } from './types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ITabReducer } from './types'
 
 const initialState: ITabReducer = {
   tabs: {
@@ -7,32 +7,33 @@ const initialState: ITabReducer = {
       tabId: 'home',
       title: 'home',
       icon: 'home',
-      tabType: 'home',
+      tabType: 'home'
     },
     user: {
       title: 'user',
       tabId: 'user',
       icon: 'user',
-      tabType: 'userManager',
-    },
+      tabType: 'userManager'
+    }
   },
-  currentTab: 'home',
-};
+  currentTab: 'home'
+}
 
 const tabSlice = createSlice({
   name: 'tab',
   initialState,
   reducers: {
     changeTab(state, action: PayloadAction<string>) {
-      const tabId = action.payload;
+      const tabId = action.payload
+
       return {
         ...state,
-        currentTab: tabId,
-      };
-    },
-  },
-});
+        currentTab: tabId
+      }
+    }
+  }
+})
 
-const actions = { ...tabSlice.actions };
-export { actions as tabActions };
-export default tabSlice;
+const actions = { ...tabSlice.actions }
+export { actions as tabActions }
+export default tabSlice

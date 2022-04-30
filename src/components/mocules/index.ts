@@ -1,4 +1,6 @@
-// export { default as RootModal } from './RootModal';
-export { default as TabPanel } from './TabPanel';
-// export { default as Notification } from './Notification';
-// export { default as Table } from './Table';
+export { default as TabPanel } from './TabPanel'
+export { default as ErrorPageWrapper } from './ErrorPageWrapper'
+export { default as Drawer } from './Drawer'
+export { default as ScrollWrapper } from './ScrollWrapper'
+export { SideBarMenuItem } from './SideBarMenuItem'
+export { default as ThemeWrapper } from './ThemeWrapper'

@@ -1,5 +1,5 @@
-import { styled } from '@mui/material';
-import MuiTab from '@mui/material/Tab';
+import { styled } from '@mui/material'
+import MuiTab from '@mui/material/Tab'
 
 const Tab = styled(MuiTab)(({ theme }) => ({
   paddingBlock: '0.8rem',
@@ -9,7 +9,7 @@ const Tab = styled(MuiTab)(({ theme }) => ({
     color: theme.palette.text.primary,
     borderTopLeftRadius: '0.8rem',
     borderTopRightRadius: '0.8rem',
-    position: 'relative',
-  },
-}));
-export default Tab;
+    position: 'relative'
+  }
+}))
+export default Tab

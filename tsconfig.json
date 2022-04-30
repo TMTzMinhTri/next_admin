@@ -1,4 +1,5 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -27,6 +28,7 @@
     },
   },
   "include": [
+    "global.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"

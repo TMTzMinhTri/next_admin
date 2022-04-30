@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "export": "next export",
+    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
@@ -21,7 +23,9 @@
     "notistack": "^2.0.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-perfect-scrollbar": "^1.5.8",
     "react-redux": "^8.0.1",
+    "react-table": "^7.7.0",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6"
   },
@@ -31,6 +35,7 @@
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
     "@types/react-redux": "^7.1.24",
+    "@types/react-table": "^7.7.11",
     "@types/redux-logger": "^3.0.9",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
@@ -38,6 +43,11 @@
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.6.2",
-    "typescript": "4.6.3"
+    "typescript": "4.6.3",
+    "@types/nprogress": "^0.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "next-transpile-modules": "^9.0.0"
   }
 }

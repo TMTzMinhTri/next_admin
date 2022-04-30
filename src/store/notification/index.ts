@@ -1,10 +1,10 @@
-import { SnackbarKey } from 'notistack';
-import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit';
-import { INotification, INotificationReducer } from './types';
+import { SnackbarKey } from 'notistack'
+import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit'
+import { INotification, INotificationReducer } from './types'
 
 const initialState: INotificationReducer = {
-  notifications: [],
-};
+  notifications: []
+}
 
 const notificationSlice = createSlice({
   name: 'notification',
@@ -13,27 +13,27 @@ const notificationSlice = createSlice({
     showToast: (state, action: PayloadAction<Omit<INotification, 'key'>>) => {
       const notification: INotification = {
         ...action.payload,
-        key: nanoid(),
-      };
+        key: nanoid()
+      }
 
       return {
         ...state,
-        notifications: [...state.notifications, notification],
-      };
+        notifications: [...state.notifications, notification]
+      }
     },
     removeSnackbar: (state, action: PayloadAction<SnackbarKey>) => {
       return {
         ...state,
-        notifications: state.notifications.filter((notification) => {
-          notification.key !== action.payload;
-        }),
-      };
-    },
-  },
-});
+        notifications: state.notifications.filter(notification => {
+          notification.key !== action.payload
+        })
+      }
+    }
+  }
+})
 
-const actions = { ...notificationSlice.actions };
+const actions = { ...notificationSlice.actions }
 
-export { actions as notificationActions };
+export { actions as notificationActions }
 
-export default notificationSlice;
+export default notificationSlice

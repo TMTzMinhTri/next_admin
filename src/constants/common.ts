@@ -1,3 +1,3 @@
 export const tabsComponent: any = {
-  home: 'home',
-};
+  home: 'home'
+}

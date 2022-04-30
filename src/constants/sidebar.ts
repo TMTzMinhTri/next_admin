@@ -1,13 +1,17 @@
-import urls from './urls';
+import { HomeOutlined, AccountBoxOutlined } from '@mui/icons-material'
 
-interface ISidebarMenu {
-  label: string;
-  path: string;
-}
-
-export const sidebarMenus: Record<string, ISidebarMenu> = {
-  excel: {
-    label: 'Excel',
-    path: urls.excel(),
+export const sidebarDashBoardMenus: VerticalNavItemsType = [
+  {
+    title: 'Dashboard',
+    icon: HomeOutlined,
+    path: '/'
   },
-};
+  {
+    title: 'Account Settings',
+    icon: AccountBoxOutlined,
+    path: '/account-settings'
+  },
+  {
+    sectionTitle: 'Pages'
+  }
+]

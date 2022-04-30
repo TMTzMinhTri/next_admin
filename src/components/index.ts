@@ -1,5 +1,5 @@
-export { default as Layout } from '@/components/layout';
-export * from './atoms';
-export * from './mocules';
-export * from './organisms';
-// components
+export { default as VerticalLayout } from './layout/VerticalLayout'
+export { default as BlankLayout } from './layout/BlankLayout'
+export * from './atoms'
+export * from './mocules'
+export * from './organisms'
