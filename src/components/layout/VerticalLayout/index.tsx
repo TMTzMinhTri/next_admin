@@ -17,7 +17,7 @@ interface IVerticalLayoutProps {
   saveSetting: (setting: ISetting) => void
   verticalAppBarContent?: (props?: any) => React.ReactNode
   footerContent?: (props?: any) => React.ReactNode
-  scrollToTop?: (props: any) => React.ReactNode
+  fabContent?: (props: any) => React.ReactNode
 }
 
 const VerticalLayoutWrapper = styled('div')({
@@ -45,7 +45,7 @@ const ContentWrapper = styled('main')(({ theme }) => ({
 }))
 
 const VerticalLayout: React.FunctionComponent<React.PropsWithChildren<IVerticalLayoutProps>> = props => {
-  const { children, setting, scrollToTop } = props
+  const { children, setting, fabContent } = props
   const { contentWidth } = setting
   const navWidth = themeConfig.navigationSize
 
@@ -80,8 +80,8 @@ const VerticalLayout: React.FunctionComponent<React.PropsWithChildren<IVerticalL
           <LayoutFooter {...props} />
         </MainContentWrapper>
       </VerticalLayoutWrapper>
-      {scrollToTop ? (
-        scrollToTop(props)
+      {fabContent ? (
+        fabContent(props)
       ) : (
         <ScrollToTop className='mui-fixed'>
           <Fab color='primary' size='small' aria-label='scroll back to top'>

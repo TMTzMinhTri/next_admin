@@ -85,7 +85,7 @@ const VerticalNavLink: React.FunctionComponent<IVerticalNavLinkProps> = ({ item,
         >
           <ListItemIcon
             sx={{
-              mr: 2.5,
+              mr: 0.5,
               color: 'text.primary',
               transition: 'margin .25s ease-in-out'
             }}

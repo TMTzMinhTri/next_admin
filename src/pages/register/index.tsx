@@ -3,8 +3,9 @@ import { Avatar, Button, Checkbox, Container, FormControlLabel, Grid, TextField,
 import { Box } from '@mui/system'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import NextLink from 'next/link'
+import { BlankLayout } from '@/components'
 
-const RegisterPage: React.FunctionComponent<any> = () => {
+const RegisterPage = () => {
   const handleSubmit = () => {
     console.log('aaa')
   }
@@ -74,9 +75,7 @@ const RegisterPage: React.FunctionComponent<any> = () => {
           </Button>
           <Grid container justifyContent='flex-end'>
             <Grid item>
-              <Link component={NextLink} href='/login'>
-                Already have an account? Sign in
-              </Link>
+              <NextLink href='/login'>Already have an account? Sign in</NextLink>
             </Grid>
           </Grid>
         </Box>
@@ -84,5 +83,6 @@ const RegisterPage: React.FunctionComponent<any> = () => {
     </Container>
   )
 }
+RegisterPage.getLayout = (page: React.ReactNode) => <BlankLayout>{page}</BlankLayout>
 
 export default RegisterPage

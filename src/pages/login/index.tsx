@@ -3,8 +3,9 @@ import { Grid, Avatar, TextField, Typography, Button, FormControlLabel, Checkbox
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { Box } from '@mui/system'
 import NextLink from 'next/link'
+import { BlankLayout } from '@/components'
 
-const SignInPage: React.FunctionComponent<any> = () => {
+const SignInPage = () => {
   const handleSubmit = () => {
     console.log('aa')
   }
@@ -67,14 +68,14 @@ const SignInPage: React.FunctionComponent<any> = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link component={NextLink} href='/register'>
-                  Forgot password?
-                </Link>
+                <NextLink href='/register' passHref>
+                  <a>Forgot password?</a>
+                </NextLink>
               </Grid>
               <Grid item>
-                <Link component={NextLink} href='/register'>
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <NextLink href='/register' passHref>
+                  <a>{"Don't have an account? Sign Up"}</a>
+                </NextLink>
               </Grid>
             </Grid>
           </Box>
@@ -83,5 +84,7 @@ const SignInPage: React.FunctionComponent<any> = () => {
     </Grid>
   )
 }
+
+SignInPage.getLayout = (page: React.ReactNode) => <BlankLayout>{page}</BlankLayout>
 
 export default SignInPage

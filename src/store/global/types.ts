@@ -10,3 +10,8 @@ export interface ISetting {
   themeColor: ThemeColor
   contentWidth: ContentWidth
 }
+
+export interface ILocation {
+  id: string
+  name: string
+}

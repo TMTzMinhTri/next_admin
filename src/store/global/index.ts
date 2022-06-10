@@ -1,6 +1,8 @@
-import themeConfig from '@/constants/themeConfig'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
+
+import { getDistrictsBuilder, getDistricts } from './actions/getDistricts'
+import themeConfig from '@/constants/themeConfig'
 import { IGlobalReducer, ISetting } from './types'
 
 const initialState: IGlobalReducer = {
@@ -23,19 +25,17 @@ const globalSlice = createSlice({
       state.isShowMenu = !state.isShowMenu
     }
   },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      console.log('HYDRATE', action.payload)
-
-      return {
-        ...state,
-        ...action.payload.subject
+  extraReducers: builder => {
+    getDistrictsBuilder(builder)
+    builder.addCase(HYDRATE, (state, action: any) => {
+      if (typeof window !== 'undefined') {
+        state = { ...state, ...action.payload.global }
       }
-    }
+    })
   }
 })
 
-const actions = { ...globalSlice.actions }
+const actions = { ...globalSlice.actions, getDistricts }
 
 export { actions as globalActions }
 export default globalSlice

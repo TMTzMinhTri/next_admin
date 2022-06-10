@@ -1,66 +1,65 @@
-import { PaletteMode } from '@mui/material';
+import { PaletteMode } from '@mui/material'
 
 export declare global {
-  type ContentWidth = 'full' | 'boxed';
+  type ContentWidth = 'full' | 'boxed'
 
-  type ThemeColor =
-    | 'primary'
-    | 'secondary'
-    | 'error'
-    | 'warning'
-    | 'info'
-    | 'success';
+  type ThemeColor = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
 
   type NavLink = {
-    path?: string;
-    title: string;
-    action?: string;
-    subject?: string;
-    disabled?: boolean;
-    badgeContent?: string;
-    externalLink?: boolean;
-    openInNewTab?: boolean;
-    icon?: string | string[] | ReactNode;
-    badgeColor?:
-      | 'default'
-      | 'primary'
-      | 'secondary'
-      | 'success'
-      | 'error'
-      | 'warning'
-      | 'info';
-  };
-
-  interface NavSectionTitle {
-    sectionTitle: string;
-    action?: string;
-    subject?: string;
+    path?: string
+    title: string
+    action?: string
+    subject?: string
+    disabled?: boolean
+    badgeContent?: string
+    externalLink?: boolean
+    openInNewTab?: boolean
+    icon?: string | string[] | ReactNode
+    badgeColor?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
   }
 
-  type VerticalNavItemsType = Array<NavLink | NavSectionTitle>;
+  interface NavSectionTitle {
+    sectionTitle: string
+    action?: string
+    subject?: string
+  }
+
+  type VerticalNavItemsType = Array<NavLink | NavSectionTitle>
 
   type Settings = {
-    mode: PaletteMode;
-    themeColor: ThemeColor;
-    contentWidth: ContentWidth;
-  };
+    mode: PaletteMode
+    themeColor: ThemeColor
+    contentWidth: ContentWidth
+  }
+
+  interface ICommonRequest<T> {
+    data?: T
+  }
+
+  interface ICommonResponse<T> {
+    data: T
+  }
+
+  interface IThunkApiConfig {
+    rejectValue: Record<string, any>
+  }
 }
 
 declare module '@mui/material/styles' {
   interface Palette {
     customColors: {
-      main: string;
-      tableHeaderBg: string;
-      primaryGradient: string;
-    };
+      main: string
+      tableHeaderBg: string
+      primaryGradient: string
+    }
   }
   interface PaletteOptions {
     customColors?: {
-      main?: string;
-      tableHeaderBg?: string;
-      primaryGradient?: string;
-    };
+      main?: string
+      tableHeaderBg?: string
+      primaryGradient?: string
+    }
   }
 }
 
-export {};
+export {}
