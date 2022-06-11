@@ -8,6 +8,7 @@ import createEmotionCache from '@/libs/createEmotionCache'
 import { SettingsConsumer, SettingsProvider } from '@/contexts/settingsContext'
 import ThemeComponent from '@/containers/ThemeWrapper'
 import themeConfig from '@/constants/themeConfig'
+import { ConfirmDialogProvider } from '@/contexts/confirmDialogContext'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -32,13 +33,15 @@ function MyApp(props: MyAppProps) {
         <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
-      <SettingsProvider>
-        <SettingsConsumer>
-          {({ settings }) => {
-            return <ThemeComponent settings={settings}>{getLayout(<Component {...pageProps} />)}</ThemeComponent>
-          }}
-        </SettingsConsumer>
-      </SettingsProvider>
+      <ConfirmDialogProvider>
+        <SettingsProvider>
+          <SettingsConsumer>
+            {({ settings }) => {
+              return <ThemeComponent settings={settings}>{getLayout(<Component {...pageProps} />)}</ThemeComponent>
+            }}
+          </SettingsConsumer>
+        </SettingsProvider>
+      </ConfirmDialogProvider>
     </CacheProvider>
   )
 }
