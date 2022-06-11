@@ -8,7 +8,8 @@ export const getListClient = createAsyncThunk<ICommonResponse<Array<IClient>>>(
   async (_, { rejectWithValue }) => {
     try {
       const response = await clientService.getListClient()
-      return response.data
+      
+return response.data
     } catch (error) {
       rejectWithValue(error)
     }
@@ -22,7 +23,7 @@ export const getListClientBuilder = (builder: ActionReducerMapBuilder<IClientRed
     })
     .addCase(getListClient.fulfilled, (state, action) => {
       state.isLoading = true
-      state.clients = action.payload.data
+      if (action.payload?.data) state.clients = action.payload.data
     })
     .addCase(getListClient.rejected, state => {
       state.isLoading = true

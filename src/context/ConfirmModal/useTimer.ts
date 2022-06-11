@@ -49,7 +49,7 @@ export const useTimer = (props?: UseTimerProps) => {
       handleStopTimer()
       props?.onTimeEnd?.()
     }
-  }, [timer])
+  }, [timer, props])
 
   React.useEffect(() => {
     let interval: number | null = null

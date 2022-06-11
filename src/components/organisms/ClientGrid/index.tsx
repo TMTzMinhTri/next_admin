@@ -2,10 +2,9 @@ import * as React from 'react'
 import MUIDataTable, { MUIDataTableOptions, MUIDataTableColumn } from 'mui-datatables'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectListClient } from '@/store/client/selectors'
-import { Button, ButtonGroup, Typography } from '@mui/material'
+import { Button, ButtonGroup } from '@mui/material'
 import { useConfirmDialog } from '@/context/ConfirmModal/useConfirmDialog'
 import { clientActions } from '@/store/client'
-import { IClient } from '@/store/client/types'
 import { Box } from '@mui/system'
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
@@ -15,26 +14,32 @@ const ClientGrid: React.FunctionComponent = () => {
   const clients = useSelector(selectListClient)
   const dispatch = useDispatch()
 
-  const handleShowConfirmDeleteModal = React.useCallback((rowData: Array<any>) => {
-    confirm({
-      title: 'Xoá',
-      description: (
-        <div>
-          <strong>{rowData[1]}</strong> sẽ bị xoá !!!
-        </div>
-      ),
-      onConfirm: async () => {
-        await sleep(3000)
-        console.log('done')
-      }
-    })
-  }, [])
+  const handleShowConfirmDeleteModal = React.useCallback(
+    (rowData: Array<any>) => {
+      confirm({
+        title: 'Xoá',
+        description: (
+          <div>
+            <strong>{rowData[1]}</strong> sẽ bị xoá !!!
+          </div>
+        ),
+        onConfirm: async () => {
+          await sleep(3000)
+          console.log('done')
+        }
+      })
+    },
+    [confirm]
+  )
 
-  const handleShowModalEdit = React.useCallback((rowData: Array<any>) => {
-    const client = clients.find(it => it.id === rowData[0])
+  const handleShowModalEdit = React.useCallback(
+    (rowData: Array<any>) => {
+      const client = clients.find(it => it.id === rowData[0])
 
-    dispatch(clientActions.setClientEdit(client))
-  }, [clients])
+      dispatch(clientActions.setClientEdit(client))
+    },
+    [clients, dispatch]
+  )
 
   const options: MUIDataTableOptions = React.useMemo(
     () => ({
@@ -61,6 +66,7 @@ const ClientGrid: React.FunctionComponent = () => {
         options: {
           customBodyRenderLite: dataIndex => {
             const val = clients[dataIndex].name
+
             return <strong>{val}</strong>
           }
         }
@@ -71,6 +77,7 @@ const ClientGrid: React.FunctionComponent = () => {
         options: {
           customBodyRenderLite: dataIndex => {
             const val = clients[dataIndex].phone
+
             return <Box sx={{ textAlign: 'center' }}>{val || '-'}</Box>
           }
         }
@@ -79,6 +86,7 @@ const ClientGrid: React.FunctionComponent = () => {
         name: 'address',
         label: 'Địa chỉ'
       },
+
       // {
       //   name: 'district.name',
       //   label: 'Quận',
@@ -113,7 +121,7 @@ const ClientGrid: React.FunctionComponent = () => {
         }
       }
     ],
-    [clients]
+    [clients, handleShowConfirmDeleteModal, handleShowModalEdit]
   )
 
   return <MUIDataTable title={'ACME Employee list'} data={clients} columns={columns} options={options} />

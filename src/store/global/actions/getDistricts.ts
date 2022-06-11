@@ -9,6 +9,7 @@ export const getDistricts = createAsyncThunk<ICommonResponse<ILocation>>(
     try {
       const response = await locationService.getDistricts()
       console.log(response)
+
       return response.data
     } catch (error) {
       thunkApi.rejectWithValue('Error!!')
@@ -18,7 +19,7 @@ export const getDistricts = createAsyncThunk<ICommonResponse<ILocation>>(
 
 export const getDistrictsBuilder = (builder: ActionReducerMapBuilder<IGlobalReducer>) => {
   builder
-    .addCase(getDistricts.pending, state => {})
+    .addCase(getDistricts.pending, () => {})
     .addCase(getDistricts.fulfilled, () => {})
     .addCase(getDistricts.rejected, () => {})
 }

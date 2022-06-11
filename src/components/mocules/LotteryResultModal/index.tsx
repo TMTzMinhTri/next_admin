@@ -2,7 +2,9 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import * as React from 'react'
 
 const LotteryResultModal: React.FunctionComponent = () => {
-  const handleClose = () => {}
+  const handleClose = () => {
+    console.log('close')
+  }
 
   return (
     <Dialog open={true} onClose={handleClose}>

@@ -29,6 +29,7 @@ export type ConfirmOptions = GlobalOptions & {
   description?: React.ReactNode
   confirmText?: string
   timer?: number
+
   // dialogContent?: TODO
   onConfirm?: () => Promise<void> | void
 }

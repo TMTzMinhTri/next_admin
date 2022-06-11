@@ -28,6 +28,7 @@ const AddEditClientModal: React.FunctionComponent = () => {
     } else {
       content = 'Thêm mới'
     }
+
     return <DialogTitle>{content}</DialogTitle>
   }, [client])
 
@@ -35,7 +36,7 @@ const AddEditClientModal: React.FunctionComponent = () => {
     if (client) {
       reset(client)
     }
-  }, [client])
+  }, [reset, client])
 
   return (
     <Dialog open={Boolean(client)} onClose={handleClose}>
