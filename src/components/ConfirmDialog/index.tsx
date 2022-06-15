@@ -6,8 +6,7 @@ import {
   DialogContent,
   DialogContentText,
   TextField,
-  LinearProgress,
-  CircularProgress
+  LinearProgress
 } from '@mui/material'
 import { FinalOptions } from '@/contexts/confirmDialogContext/types'
 import { defaultGlobalOptions } from '@/contexts/confirmDialogContext/defaultOptions'

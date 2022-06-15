@@ -3,6 +3,8 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { NextPage } from 'next'
 import { CacheProvider, EmotionCache } from '@emotion/react'
+import NProgress from 'nprogress'
+import { Router } from 'next/router'
 
 import createEmotionCache from '@/libs/createEmotionCache'
 import { SettingsConsumer, SettingsProvider } from '@/contexts/settingsContext'
@@ -15,6 +17,18 @@ const clientSideEmotionCache = createEmotionCache()
 interface MyAppProps extends AppProps {
   Component: NextPage
   emotionCache?: EmotionCache
+}
+
+if (themeConfig.routingLoader) {
+  Router.events.on('routeChangeStart', () => {
+    NProgress.start()
+  })
+  Router.events.on('routeChangeError', () => {
+    NProgress.done()
+  })
+  Router.events.on('routeChangeComplete', () => {
+    NProgress.done()
+  })
 }
 
 function MyApp(props: MyAppProps) {

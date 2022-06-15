@@ -4,11 +4,17 @@ export const defaultGlobalOptions: GlobalOptions = {
   confirmButtonText: 'Confirm',
   cancelButtonText: 'Cancel',
   confirmButtonProps: {
-    color: 'primary'
+    color: 'error',
+    variant: 'contained'
   },
   cancelButtonProps: {
-    color: 'primary',
+    variant: 'contained',
+    color: 'inherit',
     autoFocus: true
+  },
+  dialogProps: {
+    fullWidth: true,
+    maxWidth: 'xs'
   }
 }
 

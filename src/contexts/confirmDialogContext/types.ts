@@ -27,7 +27,7 @@ export type GlobalOptions = {
 }
 
 export type ConfirmOptions = GlobalOptions & {
-  title: string
+  title: string | React.ReactNode
   description?: React.ReactNode
   confirmText?: string
   timer?: number
