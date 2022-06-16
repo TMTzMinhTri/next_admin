@@ -5,12 +5,14 @@ import { NextPage } from 'next'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import NProgress from 'nprogress'
 import { Router } from 'next/router'
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import createEmotionCache from '@/libs/createEmotionCache'
 import { SettingsConsumer, SettingsProvider } from '@/contexts/settingsContext'
 import ThemeComponent from '@/containers/ThemeWrapper'
 import themeConfig from '@/constants/themeConfig'
 import { ConfirmDialogProvider } from '@/contexts/confirmDialogContext'
+import AdminLayout from '@/layout/AdminLayout'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -34,7 +36,7 @@ if (themeConfig.routingLoader) {
 function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
-  const getLayout = Component.getLayout ?? ((page: any) => <div>{page}</div>)
+  const getLayout = Component.getLayout ?? ((page: any) => <AdminLayout>{page}</AdminLayout>)
 
   return (
     <CacheProvider value={emotionCache}>

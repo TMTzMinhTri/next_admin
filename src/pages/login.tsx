@@ -3,7 +3,7 @@ import { Grid, Avatar, TextField, Typography, Button, FormControlLabel, Checkbox
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { Box } from '@mui/system'
 import NextLink from 'next/link'
-// import { BlankLayout } from '@/components'
+import BlankLayout from '@/layout/BlankLayout'
 
 const SignInPage = () => {
   const handleSubmit = () => {
@@ -85,6 +85,6 @@ const SignInPage = () => {
   )
 }
 
-// SignInPage.getLayout = (page: React.ReactNode) => <BlankLayout>{page}</BlankLayout>
+SignInPage.getLayout = (page: React.ReactNode) => <BlankLayout>{page}</BlankLayout>
 
 export default SignInPage
