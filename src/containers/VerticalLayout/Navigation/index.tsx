@@ -63,30 +63,16 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
     }
   }
 
-  // const scrollMenu = (container: any) => {
-  //   container = hidden ? container.target : container
-  //   if (shadowRef && shadowRef.current) {
-  //     if (container.scrollTop > 0) {
-  //       if (!shadowRef.current.classList.contains('d-block')) {
-  //         shadowRef.current.classList.add('d-block')
-  //       }
-  //     } else {
-  //       shadowRef.current.classList.remove('d-block')
-  //     }
-  //   }
-  // }
-
   const scrollMenu = (container: any) => {
     container = hidden ? container.target : container
-    if (shadowRef && container.scrollTop > 0) {
-      // @ts-ignore
-      if (!shadowRef.current.classList.contains('d-block')) {
-        // @ts-ignore
-        shadowRef.current.classList.add('d-block')
+    if (shadowRef && shadowRef.current) {
+      if (container.scrollTop > 0) {
+        if (!shadowRef.current.classList.contains('d-block')) {
+          shadowRef.current.classList.add('d-block')
+        }
+      } else {
+        shadowRef.current.classList.remove('d-block')
       }
-    } else {
-      // @ts-ignore
-      shadowRef.current.classList.remove('d-block')
     }
   }
 

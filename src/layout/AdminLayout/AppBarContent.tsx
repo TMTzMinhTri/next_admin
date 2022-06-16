@@ -6,6 +6,7 @@ import {
   Brightness4 as LightIcon,
   DarkMode as DarkIcon
 } from '@mui/icons-material'
+import NotificationDropdown from '@/containers/NotificationDropdown'
 
 interface IAppBarContentProps {
   hidden: boolean
@@ -64,6 +65,7 @@ const AppBarContent: React.FunctionComponent<IAppBarContentProps> = ({
         <IconButton color='inherit' aria-haspopup='true' onClick={toggleTheme}>
           {settings.mode === 'dark' ? <LightIcon /> : <DarkIcon />}
         </IconButton>
+        <NotificationDropdown />
       </Box>
     </Box>
   )
