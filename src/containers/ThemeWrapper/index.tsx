@@ -10,7 +10,7 @@ import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/s
 import themeConfig from '@/constants/themeConfig'
 
 // ** Theme Override Imports
-// import overrides from '@/themes/overrides'
+import overrides from '@/themes/overrides'
 import typography from '@/themes/typography'
 
 // ** Theme
@@ -18,7 +18,6 @@ import themeOptions from '@/themes'
 
 // ** Global Styles
 import GlobalStyling from '@/themes/globalStyles'
-
 
 interface Props {
   settings: Settings
@@ -37,7 +36,7 @@ const ThemeComponent = (props: Props) => {
 
   // ** Continue theme creation and pass merged component overrides to CreateTheme function
   theme = createTheme(theme, {
-    // components: { ...overrides(theme) },
+    components: { ...overrides(theme) },
     typography: { ...typography(theme) }
   })
 

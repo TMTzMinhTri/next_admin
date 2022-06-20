@@ -1,17 +1,15 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { NextPage } from 'next'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import NProgress from 'nprogress'
 import { Router } from 'next/router'
-import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'react-perfect-scrollbar/dist/css/styles.css'
 
 import createEmotionCache from '@/libs/createEmotionCache'
 import { SettingsConsumer, SettingsProvider } from '@/contexts/settingsContext'
 import ThemeComponent from '@/containers/ThemeWrapper'
 import themeConfig from '@/constants/themeConfig'
-import { ConfirmDialogProvider } from '@/contexts/confirmDialogContext'
 import AdminLayout from '@/layout/AdminLayout'
 
 const clientSideEmotionCache = createEmotionCache()
@@ -49,7 +47,6 @@ function MyApp(props: MyAppProps) {
         <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
-      <ConfirmDialogProvider>
         <SettingsProvider>
           <SettingsConsumer>
             {({ settings }) => {
@@ -57,7 +54,6 @@ function MyApp(props: MyAppProps) {
             }}
           </SettingsConsumer>
         </SettingsProvider>
-      </ConfirmDialogProvider>
     </CacheProvider>
   )
 }

@@ -8,7 +8,7 @@ import {
   TextField,
   LinearProgress
 } from '@mui/material'
-import { FinalOptions } from '@/contexts/confirmDialogContext/types'
+import type { FinalOptions } from '@/contexts/confirmDialogContext/types'
 import { defaultGlobalOptions } from '@/contexts/confirmDialogContext/defaultOptions'
 import { Button } from '../Button'
 

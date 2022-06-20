@@ -1,10 +1,9 @@
 import { useConfirm } from '@/hooks/useConfirm'
 import { Button, Typography } from '@mui/material'
-import type { GetServerSidePropsContext, NextPage } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import ConfirmDelete from '@/components/shared/DialogHeader/ConfirmDelete'
 import Link from 'next/link'
-import { GetServerSideProps } from 'next'
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -35,15 +34,6 @@ const Home: NextPage = () => {
       </Typography>
     </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
-  return {
-    redirect: {
-      destination: '/admin',
-      statusCode: 301
-    }
-  }
 }
 
 export default Home

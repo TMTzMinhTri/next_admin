@@ -16,6 +16,7 @@ import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButto
 
 import themeConfig from '@/constants/themeConfig'
 import UserIcon from '@/components/UserIcon'
+import { SvgIconComponent } from '@mui/icons-material'
 
 interface Props {
   item: NavLink
@@ -66,7 +67,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
   // ** Hooks
   const router = useRouter()
 
-  const IconTag: ReactNode = item.icon
+  // const IconTag: SvgIconComponent = item.icon
 
   const isNavLinkActive = () => {
     if (router.pathname === item.path || handleURLQueries(router, item.path)) {
@@ -109,7 +110,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
               transition: 'margin .25s ease-in-out'
             }}
           >
-            <UserIcon icon={IconTag} />
+            {/* {IconTag} */}
           </ListItemIcon>
 
           <MenuItemTextMetaWrapper>
