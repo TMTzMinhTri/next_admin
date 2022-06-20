@@ -1,6 +1,13 @@
+import type { ReactNode } from 'react'
 import { PaletteMode } from '@mui/material'
+import type { NextComponentType, NextPageContext } from 'next/dist/shared/lib/utils'
+import { SvgIconComponent } from '@mui/icons-material'
 
-export declare global {
+declare global {
+  type NextPage<P = {}, IP = P> = NextComponentType<NextPageContext, IP, P> & {
+    getLayout?: (page: ReactNode) => ReactNode
+  }
+
   type ContentWidth = 'full' | 'boxed'
 
   type ThemeColor = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
@@ -14,7 +21,7 @@ export declare global {
     badgeContent?: string
     externalLink?: boolean
     openInNewTab?: boolean
-    icon?: string | string[] | ReactNode
+    icon?: SvgIconComponent
     badgeColor?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
   }
 

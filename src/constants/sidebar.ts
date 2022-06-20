@@ -1,4 +1,4 @@
-import { HomeOutlined, AccountBoxOutlined, HomeMaxOutlined } from '@mui/icons-material'
+import { HomeMaxOutlined } from '@mui/icons-material'
 
 export const sidebarDashBoardMenus: VerticalNavItemsType = [
   {

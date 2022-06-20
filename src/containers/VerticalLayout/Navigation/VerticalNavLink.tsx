@@ -1,5 +1,5 @@
 // ** React Imports
-import { ElementType, ReactNode } from 'react'
+import { ElementType } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
@@ -13,9 +13,11 @@ import Typography from '@mui/material/Typography'
 import Box, { BoxProps } from '@mui/material/Box'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton'
+import { HomeMaxOutlined } from '@mui/icons-material'
 
 import themeConfig from '@/constants/themeConfig'
 import UserIcon from '@/components/UserIcon'
+import { SvgIconComponent } from '@mui/icons-material'
 
 interface Props {
   item: NavLink
@@ -66,7 +68,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
   // ** Hooks
   const router = useRouter()
 
-  const IconTag: ReactNode = item.icon
+  const IconTag = item.icon
 
   const isNavLinkActive = () => {
     if (router.pathname === item.path || handleURLQueries(router, item.path)) {
@@ -102,15 +104,17 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
             ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' })
           }}
         >
-          <ListItemIcon
-            sx={{
-              mr: 2.5,
-              color: 'text.primary',
-              transition: 'margin .25s ease-in-out'
-            }}
-          >
-            <UserIcon icon={IconTag} />
-          </ListItemIcon>
+          {IconTag && (
+            <ListItemIcon
+              sx={{
+                mr: 2.5,
+                color: 'text.primary',
+                transition: 'margin .25s ease-in-out'
+              }}
+            >
+              <UserIcon icon={IconTag} />
+            </ListItemIcon>
+          )}
 
           <MenuItemTextMetaWrapper>
             <Typography {...(themeConfig.menuTextTruncate && { noWrap: true })}>{item.title}</Typography>

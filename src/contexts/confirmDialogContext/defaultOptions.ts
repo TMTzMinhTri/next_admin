@@ -9,7 +9,7 @@ export const defaultGlobalOptions: GlobalOptions = {
   },
   cancelButtonProps: {
     variant: 'contained',
-    color: 'inherit',
+    color: 'secondary',
     autoFocus: true
   },
   dialogProps: {

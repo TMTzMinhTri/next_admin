@@ -14,7 +14,7 @@ import {
   useMediaQuery
 } from '@mui/material'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
-import ScrollWrapper from '@/components/PerfectScrollbar'
+import PerfectScrollbar from '@/components/PerfectScrollbar'
 
 const styles = {
   maxHeight: 349,
@@ -79,7 +79,7 @@ const NotificationDropdown: React.FunctionComponent = () => {
             />
           </Box>
         </MenuItem>
-        <ScrollWrapper hidden={hidden} styles={styles}>
+        <PerfectScrollbar sx={styles} options={{ wheelPropagation: false, suppressScrollX: true }}>
           <MenuItem onClick={handleDropdownClose}>
             <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
               <Avatar alt='Flora' src='/images/avatars/4.png' />
@@ -392,7 +392,7 @@ const NotificationDropdown: React.FunctionComponent = () => {
               </Typography>
             </Box>
           </MenuItem>
-        </ScrollWrapper>
+        </PerfectScrollbar>
       </Menu>
     </React.Fragment>
   )

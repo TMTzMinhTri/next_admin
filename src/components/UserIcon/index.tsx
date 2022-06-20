@@ -1,12 +1,9 @@
-// ** React Imports
-import { ReactNode } from 'react'
-
-// ** MUI Imports
 import { SvgIconProps } from '@mui/material'
+import { SvgIconComponent } from '@mui/icons-material'
 
 interface UserIconProps {
   iconProps?: SvgIconProps
-  icon: string | ReactNode
+  icon: SvgIconComponent
 }
 
 const UserIcon = (props: UserIconProps) => {

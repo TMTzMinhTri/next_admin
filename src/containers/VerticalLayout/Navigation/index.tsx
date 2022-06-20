@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { List, styled, useTheme } from '@mui/material'
 import Box, { BoxProps } from '@mui/material/Box'
-import PerfectScrollbar from 'react-perfect-scrollbar'
 
 import Drawer from './Drawer'
 import VerticalNavHeader from './VerticalNavHeader'
 import { hexToRGBA } from '@/utils/hexToRGBA'
 import VerticalNavItems from './VerticalNavItems'
+import PerfectScrollbar from '@/components/PerfectScrollbar'
 
 const StyledBoxForShadow = styled(Box)<BoxProps>({
   top: 50,
@@ -40,7 +40,6 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
   const shadowRef = React.useRef<HTMLElement>()
   const theme = useTheme()
   const {
-    hidden,
     afterVerticalNavMenuContent,
     beforeVerticalNavMenuContent,
     verticalNavMenuContent: userVerticalNavMenuContent
@@ -63,8 +62,7 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
     }
   }
 
-  const scrollMenu = (container: any) => {
-    container = hidden ? container.target : container
+  const scrollMenu = (container: HTMLElement) => {
     if (shadowRef && shadowRef.current) {
       if (container.scrollTop > 0) {
         if (!shadowRef.current.classList.contains('d-block')) {
@@ -75,8 +73,6 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
       }
     }
   }
-
-  const ScrollWrapper = hidden ? Box : PerfectScrollbar
 
   return (
     <Drawer {...props}>
@@ -91,18 +87,10 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
         }}
       />
       <Box sx={{ height: '100%', position: 'relative', overflow: 'hidden' }}>
-        {/* @ts-ignore */}
-        <ScrollWrapper
-          containerRef={(ref: any) => handleInfiniteScroll(ref)}
-          {...(hidden
-            ? {
-                onScroll: (container: any) => scrollMenu(container),
-                sx: { height: '100%', overflowY: 'auto', overflowX: 'hidden' }
-              }
-            : {
-                options: { wheelPropagation: false },
-                onScrollY: (container: any) => scrollMenu(container)
-              })}
+        <PerfectScrollbar
+          options={{ wheelPropagation: false }}
+          containerRef={ref => handleInfiniteScroll(ref)}
+          onScrollY={container => scrollMenu(container)}
         >
           {beforeVerticalNavMenuContent ? beforeVerticalNavMenuContent(props) : null}
           <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -120,7 +108,7 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
               </List>
             )}
           </Box>
-        </ScrollWrapper>
+        </PerfectScrollbar>
       </Box>
       {afterVerticalNavMenuContent ? afterVerticalNavMenuContent(props) : null}
     </Drawer>
