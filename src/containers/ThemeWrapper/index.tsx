@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
+import { useMediaQuery } from '@mui/material'
 
 // ** Theme Config
 import themeConfig from '@/constants/themeConfig'
@@ -27,9 +28,12 @@ interface Props {
 const ThemeComponent = (props: Props) => {
   // ** Props
   const { settings, children } = props
-
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   // ** Merged ThemeOptions of Core and User
-  const coreThemeConfig = themeOptions(settings)
+  const coreThemeConfig = themeOptions({
+    ...settings,
+    ...(settings.mode === 'system' && { mode: prefersDarkMode ? 'dark' : 'light' })
+  })
 
   // ** Pass ThemeOptions to CreateTheme Function to create partial theme without component overrides
   let theme = createTheme(coreThemeConfig)

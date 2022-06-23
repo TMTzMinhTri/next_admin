@@ -1,7 +1,7 @@
 import { PaletteMode } from '@mui/material'
 
 type ThemeConfig = {
-  mode: PaletteMode
+  mode: PaletteMode | 'system'
   templateName: string
   routingLoader: boolean
   disableRipple: boolean
@@ -14,7 +14,7 @@ type ThemeConfig = {
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
   templateName: 'Materio' /* App Name */,
-  mode: 'dark' /* light | dark */,
+  mode: 'system' /* light | dark */,
   contentWidth: 'boxed' /* full | boxed */,
 
   // ** Routing Configs

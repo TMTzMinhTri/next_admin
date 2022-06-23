@@ -116,7 +116,6 @@ const AuthenticationWrapper: React.FunctionComponent<React.PropsWithChildren> = 
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <FacebookLogin
               appId='1085456769059907'
-              // initParams={{ version: 'v14.0', cookie: true, xfbml: true }}
               fields='name,email,picture'
               scope='public_profile'
               onSuccess={(response: LoginResponse['authResponse']) => {
@@ -131,31 +130,12 @@ const AuthenticationWrapper: React.FunctionComponent<React.PropsWithChildren> = 
                 console.log('Get Profile Success!')
                 console.log('name: ', response)
               }}
-              // render={({ onClick }) => (
-              //   <IconButton onClick={onClick}>
-              //     <Facebook sx={{ color: '#497ce2' }} />
-              //   </IconButton>
-              // )}
+              render={({ onClick }) => (
+                <IconButton onClick={onClick}>
+                  <Facebook sx={{ color: '#497ce2' }} />
+                </IconButton>
+              )}
             />
-            {/* <NextLink href='/' passHref>
-            </NextLink> */}
-            {/* <NextLink href='/' passHref>
-              <IconButton component='a' onClick={(e: React.MouseEvent<HTMLElement>) => e.preventDefault()}>
-                <Twitter sx={{ color: '#1da1f2' }} />
-              </IconButton>
-            </NextLink>
-            <NextLink href='/' passHref>
-              <IconButton component='a' onClick={(e: React.MouseEvent<HTMLElement>) => e.preventDefault()}>
-                <GitHub
-                  sx={{ color: theme => (theme.palette.mode === 'light' ? '#272727' : theme.palette.grey[300]) }}
-                />
-              </IconButton>
-            </NextLink>
-            <NextLink href='/' passHref>
-              <IconButton component='a' onClick={(e: React.MouseEvent<HTMLElement>) => e.preventDefault()}>
-                <Google sx={{ color: '#db4437' }} />
-              </IconButton>
-            </NextLink> */}
           </Box>
         </CardContent>
       </Card>

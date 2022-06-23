@@ -34,7 +34,7 @@ declare global {
   type VerticalNavItemsType = Array<NavLink | NavSectionTitle>
 
   type Settings = {
-    mode: PaletteMode
+    mode: PaletteMode | 'system'
     themeColor: ThemeColor
     contentWidth: ContentWidth
   }
@@ -49,6 +49,11 @@ declare global {
 
   interface IThunkApiConfig {
     rejectValue: Record<string, any>
+  }
+
+  interface IOption<T = string> {
+    key: T
+    value: string
   }
 }
 

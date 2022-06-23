@@ -1,12 +1,8 @@
 import * as React from 'react'
 import { IconButton, TextField, Theme, useMediaQuery, Box, InputAdornment } from '@mui/material'
-import {
-  DehazeRounded as MenuIcon,
-  Search as SearchIcon,
-  Brightness4 as LightIcon,
-  DarkMode as DarkIcon
-} from '@mui/icons-material'
+import { DehazeRounded as MenuIcon, Search as SearchIcon } from '@mui/icons-material'
 import NotificationDropdown from '@/containers/NotificationDropdown'
+import ThemeModeDropdown from '@/containers/ThemeModeDropdown'
 
 interface IAppBarContentProps {
   hidden: boolean
@@ -15,20 +11,9 @@ interface IAppBarContentProps {
   saveSettings: (values: Settings) => void
 }
 
-const AppBarContent: React.FunctionComponent<IAppBarContentProps> = ({
-  hidden,
-  settings,
-  saveSettings,
-  toggleNavVisibility
-}) => {
+const AppBarContent: React.FunctionComponent<IAppBarContentProps> = props => {
+  const { hidden, toggleNavVisibility } = props
   const hiddenSm = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
-  const toggleTheme = React.useCallback(() => {
-    saveSettings({
-      ...settings,
-      mode: settings.mode === 'light' ? 'dark' : 'light'
-    })
-  }, [settings])
 
   return (
     <Box
@@ -62,9 +47,7 @@ const AppBarContent: React.FunctionComponent<IAppBarContentProps> = ({
         />
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
-        <IconButton color='inherit' aria-haspopup='true' onClick={toggleTheme}>
-          {settings.mode === 'dark' ? <LightIcon /> : <DarkIcon />}
-        </IconButton>
+        <ThemeModeDropdown {...props} />
         <NotificationDropdown />
       </Box>
     </Box>
