@@ -19,9 +19,10 @@ import themeOptions from '@/themes'
 
 // ** Global Styles
 import GlobalStyling from '@/themes/globalStyles'
+import { ISetting } from '@/contexts/settingsContext'
 
 interface Props {
-  settings: Settings
+  settings: ISetting | Settings
   children: ReactNode
 }
 
@@ -29,19 +30,18 @@ const ThemeComponent = (props: Props) => {
   // ** Props
   const { settings, children } = props
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-  // ** Merged ThemeOptions of Core and User
+
   const coreThemeConfig = themeOptions({
     ...settings,
-    ...(settings.mode === 'system' && { mode: prefersDarkMode ? 'dark' : 'light' })
+    ...(settings.mode === 'system' ? { mode: prefersDarkMode ? 'dark' : 'light' } : { mode: settings.mode }),
   })
 
-  // ** Pass ThemeOptions to CreateTheme Function to create partial theme without component overrides
   let theme = createTheme(coreThemeConfig)
 
   // ** Continue theme creation and pass merged component overrides to CreateTheme function
   theme = createTheme(theme, {
     components: { ...overrides(theme) },
-    typography: { ...typography(theme) }
+    typography: { ...typography(theme) },
   })
 
   // ** Set responsive font sizes to true

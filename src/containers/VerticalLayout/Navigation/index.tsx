@@ -7,6 +7,7 @@ import VerticalNavHeader from './VerticalNavHeader'
 import { hexToRGBA } from '@/utils/hexToRGBA'
 import VerticalNavItems from './VerticalNavItems'
 import PerfectScrollbar from '@/components/PerfectScrollbar'
+import { ISetting } from '@/contexts/settingsContext'
 
 const StyledBoxForShadow = styled(Box)<BoxProps>({
   top: 50,
@@ -18,16 +19,16 @@ const StyledBoxForShadow = styled(Box)<BoxProps>({
   pointerEvents: 'none',
   width: 'calc(100% + 15px)',
   '&.d-block': {
-    display: 'block'
-  }
+    display: 'block',
+  },
 })
 
 interface INavigationProps {
   hidden: boolean
   navWidth: number
   navVisible: boolean
-  settings: Settings
-  saveSettings: (values: Settings) => void
+  settings: ISetting
+  saveSettings: (values: ISetting) => void
   setNavVisible: (value: boolean) => void
   toggleNavVisibility: () => void
   verticalNavMenuContent?: (props?: any) => React.ReactNode
@@ -42,7 +43,7 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
   const {
     afterVerticalNavMenuContent,
     beforeVerticalNavMenuContent,
-    verticalNavMenuContent: userVerticalNavMenuContent
+    verticalNavMenuContent: userVerticalNavMenuContent,
   } = props
 
   const [groupActive, setGroupActive] = React.useState<string[]>([])
@@ -83,7 +84,7 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
           background: `linear-gradient(${theme.palette.background.default} 40%,${hexToRGBA(
             theme.palette.background.default,
             0.1
-          )} 95%,${hexToRGBA(theme.palette.background.default, 0.05)})`
+          )} 95%,${hexToRGBA(theme.palette.background.default, 0.05)})`,
         }}
       />
       <Box sx={{ height: '100%', position: 'relative', overflow: 'hidden' }}>

@@ -9,7 +9,7 @@ import {
   Divider,
   IconButton,
   styled,
-  CardProps
+  CardProps,
 } from '@mui/material'
 import NextLink from 'next/link'
 import { Facebook } from '@mui/icons-material'
@@ -18,7 +18,7 @@ import FacebookLogin, { LoginResponse } from '@greatsumini/react-facebook-login'
 import themeConfig from '@/constants/themeConfig'
 
 const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
-  [theme.breakpoints.up('sm')]: { width: '28rem' }
+  [theme.breakpoints.up('sm')]: { width: '28rem' },
 }))
 
 const AuthenticationWrapper: React.FunctionComponent<React.PropsWithChildren> = ({ children }) => {
@@ -95,13 +95,13 @@ const AuthenticationWrapper: React.FunctionComponent<React.PropsWithChildren> = 
                 lineHeight: 1,
                 fontWeight: 600,
                 textTransform: 'uppercase',
-                fontSize: '1.5rem !important'
+                fontSize: '1.5rem !important',
               }}
             >
               {themeConfig.templateName}
             </Typography>
           </Box>
-          {/* {children} */}
+          {children}
           <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Typography variant='body2' sx={{ marginRight: 2 }}>
               New on our platform?

@@ -9,27 +9,27 @@ interface IErrorPageWrapperProps {
 
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
-    width: '90vw'
-  }
+    width: '90vw',
+  },
 }))
 
 const Img = styled('img')(({ theme }) => ({
   marginBlock: theme.spacing(10),
   [theme.breakpoints.down('xl')]: {
-    marginBlock: theme.spacing(0)
+    marginBlock: theme.spacing(0),
   },
   [theme.breakpoints.down('lg')]: {
     height: 450,
-    marginBlock: theme.spacing(3)
+    marginBlock: theme.spacing(3),
   },
   [theme.breakpoints.down('md')]: {
-    height: 400
-  }
+    height: 400,
+  },
 }))
 
 const ErrorPageWrapper: React.FunctionComponent<React.PropsWithChildren<IErrorPageWrapperProps>> = ({
   children,
-  imagePath
+  imagePath,
 }) => {
   return (
     <Box className='content-center'>
@@ -39,7 +39,7 @@ const ErrorPageWrapper: React.FunctionComponent<React.PropsWithChildren<IErrorPa
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          textAlign: 'center'
+          textAlign: 'center',
         }}
       >
         <BoxWrapper>{children}</BoxWrapper>

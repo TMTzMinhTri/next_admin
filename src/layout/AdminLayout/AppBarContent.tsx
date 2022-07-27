@@ -3,12 +3,14 @@ import { IconButton, TextField, Theme, useMediaQuery, Box, InputAdornment } from
 import { DehazeRounded as MenuIcon, Search as SearchIcon } from '@mui/icons-material'
 import NotificationDropdown from '@/containers/NotificationDropdown'
 import ThemeModeDropdown from '@/containers/ThemeModeDropdown'
+import ProfileDropDown from '@/containers/ProfileDropDown'
+import { ISetting } from '@/contexts/settingsContext'
 
 interface IAppBarContentProps {
   hidden: boolean
-  settings: Settings
+  settings: ISetting
   toggleNavVisibility: () => void
-  saveSettings: (values: Settings) => void
+  saveSettings: (values: ISetting) => void
 }
 
 const AppBarContent: React.FunctionComponent<IAppBarContentProps> = props => {
@@ -21,7 +23,7 @@ const AppBarContent: React.FunctionComponent<IAppBarContentProps> = props => {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
       }}
     >
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
@@ -42,13 +44,14 @@ const AppBarContent: React.FunctionComponent<IAppBarContentProps> = props => {
               <InputAdornment position='start'>
                 <SearchIcon fontSize='small' />
               </InputAdornment>
-            )
+            ),
           }}
         />
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         <ThemeModeDropdown {...props} />
         <NotificationDropdown />
+        <ProfileDropDown />
       </Box>
     </Box>
   )

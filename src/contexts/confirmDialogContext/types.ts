@@ -6,7 +6,7 @@ import {
   DialogContentTextProps,
   DialogActionsProps,
   DialogContentProps,
-  LinearProgressProps
+  LinearProgressProps,
 } from '@mui/material'
 
 export type GlobalOptions = {

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "next lint"
+    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
@@ -17,21 +18,36 @@
     "@greatsumini/react-facebook-login": "^3.2.0",
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.3",
+    "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
+    "cookie-universal": "^2.2.1",
+    "dayjs": "^1.11.3",
     "next": "12.1.6",
+    "next-redux-wrapper": "^7.0.5",
+    "next-universal-cookie": "^3.1.0",
+    "notistack": "^2.0.5",
     "nprogress": "^0.2.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hook-form": "^7.32.1",
-    "react-perfect-scrollbar": "^1.5.8"
+    "react-perfect-scrollbar": "^1.5.8",
+    "react-redux": "7.2.5",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@types/node": "17.0.42",
     "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
+    "@types/redux-logger": "^3.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-logger": "^3.0.6",
     "typescript": "4.7.3"
   }
 }

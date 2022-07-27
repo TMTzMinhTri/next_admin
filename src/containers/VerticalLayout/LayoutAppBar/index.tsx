@@ -5,12 +5,13 @@ import { ReactNode } from 'react'
 import { styled, useTheme } from '@mui/material/styles'
 import MuiAppBar, { AppBarProps } from '@mui/material/AppBar'
 import MuiToolbar, { ToolbarProps } from '@mui/material/Toolbar'
+import { ISetting } from '@/contexts/settingsContext'
 
 interface Props {
   hidden: boolean
-  settings: Settings
+  settings: ISetting
   toggleNavVisibility: () => void
-  saveSettings: (values: Settings) => void
+  saveSettings: (values: ISetting) => void
   verticalAppBarContent?: (props?: any) => ReactNode
 }
 
@@ -24,8 +25,8 @@ const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
   minHeight: theme.mixins.toolbar.minHeight,
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4)
-  }
+    paddingRight: theme.spacing(4),
+  },
 }))
 
 const Toolbar = styled(MuiToolbar)<ToolbarProps>(({ theme }) => ({
@@ -35,7 +36,7 @@ const Toolbar = styled(MuiToolbar)<ToolbarProps>(({ theme }) => ({
   padding: `${theme.spacing(0)} !important`,
   minHeight: `${theme.mixins.toolbar.minHeight}px !important`,
   transition:
-    'padding .25s ease-in-out, box-shadow .25s ease-in-out, backdrop-filter .25s ease-in-out, background-color .25s ease-in-out'
+    'padding .25s ease-in-out, box-shadow .25s ease-in-out, backdrop-filter .25s ease-in-out, background-color .25s ease-in-out',
 }))
 
 const LayoutAppBar = (props: Props) => {
@@ -54,8 +55,8 @@ const LayoutAppBar = (props: Props) => {
         className='navbar-content-container'
         sx={{
           ...(contentWidth === 'boxed' && {
-            '@media (min-width:1440px)': { maxWidth: `calc(1440px - ${theme.spacing(6)} * 2)` }
-          })
+            '@media (min-width:1440px)': { maxWidth: `calc(1440px - ${theme.spacing(6)} * 2)` },
+          }),
         }}
       >
         {(userVerticalAppBarContent && userVerticalAppBarContent(props)) || null}

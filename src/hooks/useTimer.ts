@@ -7,7 +7,7 @@ type UseTimerProps = {
 
 const useTimerConfig = {
   step: 1,
-  interval: 100
+  interval: 100,
 }
 
 type TimerState = {
@@ -21,7 +21,7 @@ const initialTimerState: TimerState = {
   timer: 0,
   startTime: 0,
   ellapsedTime: 0,
-  status: 'IDLE'
+  status: 'IDLE',
 }
 
 export const useTimer = (props?: UseTimerProps) => {
@@ -39,7 +39,7 @@ export const useTimer = (props?: UseTimerProps) => {
           startTime,
           ellapsedTime: 0,
           timer: initialTime,
-          status: 'RUNNING'
+          status: 'RUNNING',
         })
       }
     },
@@ -64,7 +64,7 @@ export const useTimer = (props?: UseTimerProps) => {
         setTimer({
           ...otherProps,
           startTime,
-          ellapsedTime: Date.now() - startTime
+          ellapsedTime: Date.now() - startTime,
         })
       }, useTimerConfig.interval)
     } else if (timer.status === 'IDLE' && interval) {

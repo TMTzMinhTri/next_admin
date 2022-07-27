@@ -15,7 +15,7 @@ const BlankLayoutWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     minHeight: '100vh',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: theme.spacing(5)
+    padding: theme.spacing(5),
   },
 
   // For V2 Blank layout pages
@@ -23,8 +23,8 @@ const BlankLayoutWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     display: 'flex',
     minHeight: '100vh',
     overflowX: 'hidden',
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 }))
 
 const BlankLayout: React.FunctionComponent<IBlankLayoutProps> = ({ children }) => {

@@ -12,9 +12,9 @@ const HeaderDialogWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     backgroundColor: alpha(theme.palette.error.main, 0.1),
     borderRadius: '50%',
     '& svg': {
-      color: alpha(theme.palette.error.main, 0.8)
-    }
-  }
+      color: alpha(theme.palette.error.main, 0.8),
+    },
+  },
 }))
 
 const ConfirmDelete: React.FunctionComponent<React.PropsWithChildren> = ({ children }) => (

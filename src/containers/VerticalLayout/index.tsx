@@ -4,10 +4,11 @@ import { Box, BoxProps } from '@mui/material'
 import Navigation from './Navigation'
 import themeConfig from '@/constants/themeConfig'
 import LayoutAppBar from './LayoutAppBar'
+import { ISetting } from '@/contexts/settingsContext'
 
 const VerticalLayoutWrapper = styled('div')({
   height: '100%',
-  display: 'flex'
+  display: 'flex',
 })
 
 const MainContentWrapper = styled(Box)<BoxProps>({
@@ -15,7 +16,7 @@ const MainContentWrapper = styled(Box)<BoxProps>({
   minWidth: 0,
   display: 'flex',
   minHeight: '100vh',
-  flexDirection: 'column'
+  flexDirection: 'column',
 })
 
 const ContentWrapper = styled('main')(({ theme }) => ({
@@ -25,14 +26,14 @@ const ContentWrapper = styled('main')(({ theme }) => ({
   transition: 'padding .25s ease-in-out',
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4)
-  }
+    paddingRight: theme.spacing(4),
+  },
 }))
 
 interface IVerticalLayoutProps {
   hidden: boolean
-  settings: Settings
-  saveSettings: (values: Settings) => void
+  settings: ISetting
+  saveSettings: (values: ISetting) => void
   verticalNavItems?: VerticalNavItemsType
   verticalAppBarContent?: (props?: any) => React.ReactNode
 }
@@ -41,6 +42,7 @@ const VerticalLayout: React.FunctionComponent<React.PropsWithChildren<IVerticalL
   const { children, settings } = props
   const { contentWidth } = settings
   const navWidth = themeConfig.navigationSize
+
   // ** States
   const [navVisible, setNavVisible] = React.useState<boolean>(false)
 
@@ -63,8 +65,8 @@ const VerticalLayout: React.FunctionComponent<React.PropsWithChildren<IVerticalL
             ...(contentWidth === 'boxed' && {
               mx: 'auto',
               '@media (min-width:1440px)': { maxWidth: 1440 },
-              '@media (min-width:1200px)': { maxWidth: '100%' }
-            })
+              '@media (min-width:1200px)': { maxWidth: '100%' },
+            }),
           }}
         >
           {children}

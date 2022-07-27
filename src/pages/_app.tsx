@@ -1,20 +1,23 @@
 import * as React from 'react'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import NProgress from 'nprogress'
 import { Router } from 'next/router'
+import { SnackbarProvider } from 'notistack'
 import 'react-perfect-scrollbar/dist/css/styles.css'
+import { NextPageContext } from 'next'
 
 import createEmotionCache from '@/libs/createEmotionCache'
 import { SettingsConsumer, SettingsProvider } from '@/contexts/settingsContext'
 import ThemeComponent from '@/containers/ThemeWrapper'
 import themeConfig from '@/constants/themeConfig'
 import AdminLayout from '@/layout/AdminLayout'
+import { wrapper } from '@/store'
 
 const clientSideEmotionCache = createEmotionCache()
 
-interface MyAppProps extends AppProps {
+interface MyAppProps extends AppProps, NextPageContext {
   Component: NextPage
   emotionCache?: EmotionCache
 }
@@ -47,15 +50,19 @@ function MyApp(props: MyAppProps) {
         <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
-        <SettingsProvider>
-          <SettingsConsumer>
-            {({ settings }) => {
-              return <ThemeComponent settings={settings}>{getLayout(<Component {...pageProps} />)}</ThemeComponent>
-            }}
-          </SettingsConsumer>
-        </SettingsProvider>
+      <SettingsProvider>
+        <SettingsConsumer>
+          {({ settings }) => {
+            return (
+              <ThemeComponent settings={settings}>
+                <SnackbarProvider maxSnack={3}>{getLayout(<Component {...pageProps} />)}</SnackbarProvider>
+              </ThemeComponent>
+            )
+          }}
+        </SettingsConsumer>
+      </SettingsProvider>
     </CacheProvider>
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)

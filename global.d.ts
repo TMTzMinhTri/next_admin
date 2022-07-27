@@ -33,8 +33,10 @@ declare global {
 
   type VerticalNavItemsType = Array<NavLink | NavSectionTitle>
 
+  type Mode = 'system'
+
   type Settings = {
-    mode: PaletteMode | 'system'
+    mode: PaletteMode
     themeColor: ThemeColor
     contentWidth: ContentWidth
   }
@@ -54,6 +56,11 @@ declare global {
   interface IOption<T = string> {
     key: T
     value: string
+  }
+
+  interface IApiError {
+    error: string
+    status: number
   }
 }
 

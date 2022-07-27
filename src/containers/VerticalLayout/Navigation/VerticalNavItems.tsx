@@ -1,14 +1,15 @@
 // ** Custom Menu Components
+import { ISetting } from '@/contexts/settingsContext'
 import VerticalNavLink from './VerticalNavLink'
 import VerticalNavSectionTitle from './VerticalNavSectionTitle'
 
 interface Props {
-  settings: Settings
+  settings: ISetting
   navVisible?: boolean
   groupActive: string[]
   currentActiveGroup: string[]
   verticalNavItems?: VerticalNavItemsType
-  saveSettings: (values: Settings) => void
+  saveSettings: (values: ISetting) => void
   setGroupActive: (value: string[]) => void
   setCurrentActiveGroup: (item: string[]) => void
 }

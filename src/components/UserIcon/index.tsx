@@ -1,26 +1,15 @@
 import { SvgIconProps } from '@mui/material'
 import { SvgIconComponent } from '@mui/icons-material'
 
-interface UserIconProps {
+interface IconProps {
   iconProps?: SvgIconProps
   icon: SvgIconComponent
 }
 
-const UserIcon = (props: UserIconProps) => {
-  // ** Props
-  const { icon, iconProps } = props
+const Icon = (props: IconProps) => {
+  const { icon: IconTag, iconProps } = props
 
-  const IconTag = icon
-
-  let styles
-
-  /* styles = {
-    color: 'red',
-    fontSize: '2rem'
-  } */
-
-  // @ts-ignore
-  return <IconTag {...iconProps} style={{ ...styles }} />
+  return <IconTag {...iconProps} />
 }
 
-export default UserIcon
+export default Icon

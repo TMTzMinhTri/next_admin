@@ -5,17 +5,17 @@ export const defaultGlobalOptions: GlobalOptions = {
   cancelButtonText: 'Cancel',
   confirmButtonProps: {
     color: 'error',
-    variant: 'contained'
+    variant: 'contained',
   },
   cancelButtonProps: {
     variant: 'contained',
     color: 'secondary',
-    autoFocus: true
+    autoFocus: true,
   },
   dialogProps: {
     fullWidth: true,
-    maxWidth: 'xs'
-  }
+    maxWidth: 'xs',
+  },
 }
 
 export const handleOverrideOptions = (
@@ -24,5 +24,5 @@ export const handleOverrideOptions = (
 ): FinalOptions => ({
   ...defaultGlobalOptions,
   ...globalOptions,
-  ...confirmOptions
+  ...confirmOptions,
 })

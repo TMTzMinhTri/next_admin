@@ -4,18 +4,19 @@ import { useToggleDropdown } from '@/hooks/useToggleDropdown'
 import {
   SettingsBrightness as SettingsBrightnessIcon,
   Brightness4 as LightIcon,
-  DarkMode as DarkIcon
+  DarkMode as DarkIcon,
 } from '@mui/icons-material'
+import { ISetting } from '@/contexts/settingsContext'
 
 const modes: IOption<PaletteMode | 'system'>[] = [
   { value: 'Light', key: 'light' },
   { value: 'Dark', key: 'dark' },
-  { value: 'System', key: 'system' }
+  { value: 'System', key: 'system' },
 ]
 
 interface IThemeModeDropdownProps {
-  settings: Settings
-  saveSettings: (values: Settings) => void
+  settings: ISetting
+  saveSettings: (values: ISetting) => void
 }
 
 const ThemeModeDropdown: React.FunctionComponent<IThemeModeDropdownProps> = ({ settings, saveSettings }) => {
@@ -32,6 +33,16 @@ const ThemeModeDropdown: React.FunctionComponent<IThemeModeDropdownProps> = ({ s
     }
   }, [])
 
+  const toggleTheme = React.useCallback(
+    (type: PaletteMode | 'system') => {
+      saveSettings({
+        ...settings,
+        mode: type,
+      })
+    },
+    [settings, saveSettings]
+  )
+
   const renderMenuItem = React.useCallback(
     (item: IOption<PaletteMode | 'system'>) => (
       <MenuItem onClick={() => toggleTheme(item.key)} key={`mode-${item.key}`}>
@@ -39,17 +50,7 @@ const ThemeModeDropdown: React.FunctionComponent<IThemeModeDropdownProps> = ({ s
         <ListItemText>{item.value}</ListItemText>
       </MenuItem>
     ),
-    []
-  )
-
-  const toggleTheme = React.useCallback(
-    (type: PaletteMode | 'system') => {
-      saveSettings({
-        ...settings,
-        mode: type
-      })
-    },
-    [settings]
+    [renderIcon, toggleTheme]
   )
 
   return (

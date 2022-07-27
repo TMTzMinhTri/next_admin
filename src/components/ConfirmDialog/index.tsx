@@ -6,7 +6,7 @@ import {
   DialogContent,
   DialogContentText,
   TextField,
-  LinearProgress
+  LinearProgress,
 } from '@mui/material'
 import type { FinalOptions } from '@/contexts/confirmDialogContext/types'
 import { defaultGlobalOptions } from '@/contexts/confirmDialogContext/defaultOptions'
@@ -23,7 +23,7 @@ export type DialogProps = {
 
 const initialConfirmInputState = {
   value: '',
-  isMatched: false
+  isMatched: false,
 }
 
 export const ConfirmDialog: React.FC<DialogProps> = ({
@@ -32,7 +32,7 @@ export const ConfirmDialog: React.FC<DialogProps> = ({
   onClose,
   onCancel,
   onConfirm,
-  finalOptions
+  finalOptions,
 }) => {
   const [confirmInput, setConfirmInput] = React.useState(initialConfirmInputState)
   const [loading, setLoading] = React.useState(false)
@@ -61,7 +61,7 @@ export const ConfirmDialog: React.FC<DialogProps> = ({
 
     setConfirmInput({
       value: inputValue,
-      isMatched: finalOptions?.confirmText === inputValue
+      isMatched: finalOptions?.confirmText === inputValue,
     })
   }
 

@@ -3,7 +3,7 @@ import { ElementType } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
-import { NextRouter, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
 // ** MUI Imports
 import Chip from '@mui/material/Chip'
@@ -13,11 +13,10 @@ import Typography from '@mui/material/Typography'
 import Box, { BoxProps } from '@mui/material/Box'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton'
-import { HomeMaxOutlined } from '@mui/icons-material'
 
 import themeConfig from '@/constants/themeConfig'
 import UserIcon from '@/components/UserIcon'
-import { SvgIconComponent } from '@mui/icons-material'
+import { isActiveLink } from '@/utils/boolean'
 
 interface Props {
   item: NavLink
@@ -38,11 +37,11 @@ const MenuNavLink = styled(ListItemButton)<
   transition: 'opacity .25s ease-in-out',
   '&.active, &.active:hover': {
     boxShadow: theme.shadows[3],
-    backgroundImage: `linear-gradient(98deg, ${theme.palette.customColors.primaryGradient}, ${theme.palette.primary.main} 94%)`
+    backgroundImage: `linear-gradient(98deg, ${theme.palette.customColors.primaryGradient}, ${theme.palette.primary.main} 94%)`,
   },
   '&.active .MuiTypography-root, &.active .MuiSvgIcon-root': {
-    color: `${theme.palette.common.white} !important`
-  }
+    color: `${theme.palette.common.white} !important`,
+  },
 }))
 
 const MenuItemTextMetaWrapper = styled(Box)<BoxProps>({
@@ -51,32 +50,12 @@ const MenuItemTextMetaWrapper = styled(Box)<BoxProps>({
   alignItems: 'center',
   justifyContent: 'space-between',
   transition: 'opacity .25s ease-in-out',
-  ...(themeConfig.menuTextTruncate && { overflow: 'hidden' })
+  ...(themeConfig.menuTextTruncate && { overflow: 'hidden' }),
 })
-
-const handleURLQueries = (router: NextRouter, path: string | undefined): boolean => {
-  if (Object.keys(router.query).length && path) {
-    const arr = Object.keys(router.query)
-
-    return router.asPath.includes(path) && router.asPath.includes(router.query[arr[0]] as string) && path !== '/'
-  }
-
-  return false
-}
 
 const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
   // ** Hooks
   const router = useRouter()
-
-  const IconTag = item.icon
-
-  const isNavLinkActive = () => {
-    if (router.pathname === item.path || handleURLQueries(router, item.path)) {
-      return true
-    } else {
-      return false
-    }
-  }
 
   return (
     <ListItem
@@ -88,7 +67,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
       <Link passHref href={item.path === undefined ? '/' : `${item.path}`}>
         <MenuNavLink
           component={'a'}
-          className={isNavLinkActive() ? 'active' : ''}
+          className={isActiveLink(router, item.path) ? 'active' : ''}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
           onClick={e => {
             if (item.path === undefined) {
@@ -101,18 +80,18 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
           }}
           sx={{
             pl: 5.5,
-            ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' })
+            ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
           }}
         >
-          {IconTag && (
+          {item.icon && (
             <ListItemIcon
               sx={{
                 mr: 2.5,
                 color: 'text.primary',
-                transition: 'margin .25s ease-in-out'
+                transition: 'margin .25s ease-in-out',
               }}
             >
-              <UserIcon icon={IconTag} />
+              <UserIcon icon={item.icon} />
             </ListItemIcon>
           )}
 
@@ -126,7 +105,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
                   height: 20,
                   fontWeight: 500,
                   marginLeft: 1.25,
-                  '& .MuiChip-label': { px: 1.5, textTransform: 'capitalize' }
+                  '& .MuiChip-label': { px: 1.5, textTransform: 'capitalize' },
                 }}
               />
             ) : null}

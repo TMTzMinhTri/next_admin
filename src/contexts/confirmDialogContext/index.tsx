@@ -20,7 +20,7 @@ export const ConfirmDialogProvider: React.FunctionComponent<React.PropsWithChild
 
   const timer = useTimer({
     onTimeEnd: () => handleCancel(),
-    onTimeTick: timeLeft => setTimerProgress((100 * timeLeft) / finalOptions.timer!)
+    onTimeTick: timeLeft => setTimerProgress((100 * timeLeft) / finalOptions.timer!),
   })
 
   const confirm = React.useCallback(

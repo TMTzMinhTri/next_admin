@@ -8,10 +8,8 @@ import {
   Menu,
   MenuItem,
   styled,
-  Theme,
   Typography,
   TypographyProps,
-  useMediaQuery
 } from '@mui/material'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import PerfectScrollbar from '@/components/PerfectScrollbar'
@@ -19,8 +17,8 @@ import PerfectScrollbar from '@/components/PerfectScrollbar'
 const styles = {
   maxHeight: 349,
   '& .MuiMenuItem-root:last-of-type': {
-    border: 0
-  }
+    border: 0,
+  },
 }
 
 const MenuItemTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
@@ -30,7 +28,7 @@ const MenuItemTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   fontSize: '0.875rem',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
-  marginBottom: theme.spacing(0.75)
+  marginBottom: theme.spacing(0.75),
 }))
 
 // ** Styled component for the subtitle in MenuItems
@@ -38,13 +36,11 @@ const MenuItemSubtitle = styled(Typography)<TypographyProps>({
   flex: '1 1 100%',
   overflow: 'hidden',
   whiteSpace: 'nowrap',
-  textOverflow: 'ellipsis'
+  textOverflow: 'ellipsis',
 })
 
 const NotificationDropdown: React.FunctionComponent = () => {
   const [anchorEl, setAnchorEl] = React.useState<(EventTarget & Element) | null>(null)
-
-  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
 
   const handleDropdownOpen = (event: React.SyntheticEvent) => {
     setAnchorEl(event.currentTarget)
